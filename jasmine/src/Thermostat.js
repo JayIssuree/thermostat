@@ -6,6 +6,8 @@ class Thermostat {
         this.MINIMUM_TEMPERATURE = 10
         this.MAXIMUM_TEMPERATURE_PSM_ON = 25
         this.MAXIMUM_TEMPERATURE_PSM_OFF = 32
+        this.LOW_USAGE = 18
+        this.MEDIUM_USAGE = 25
         this.powerSavingMode = true
         this.temperature = 20
     }
@@ -57,6 +59,24 @@ class Thermostat {
         } else {
             return this.temperature >= this.MAXIMUM_TEMPERATURE_PSM_OFF
         }
+    }
+
+    usage(){
+        if (this.isLowUsage()){
+            return 'low-usage'
+        } else if (this.isMediumUsage()){
+            return 'medium-usage'
+        } else {
+            return 'high-usage'
+        }
+    }
+
+    isLowUsage(){
+        return this.temperature < this.LOW_USAGE
+    }
+
+    isMediumUsage(){
+        return this.temperature >= this.LOW_USAGE && this.temperature <= this.MEDIUM_USAGE
     }
 
 }
