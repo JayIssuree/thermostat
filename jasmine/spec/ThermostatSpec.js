@@ -94,7 +94,7 @@ describe("Thermostat", function(){
             do {
                 subject.up()
             } while (subject.getCurrentTemperature() < 32)
-            subject.reset()
+            subject.resetTemperature()
             expect(subject.getCurrentTemperature()).toEqual(20)
         })
 
@@ -103,14 +103,14 @@ describe("Thermostat", function(){
     describe("usage", function(){
 
         it("returns medium when the temperature is below 26", function(){
-            expect(subject.usage()).toEqual('medium-usage')
+            expect(subject.energyUsage()).toEqual('medium-usage')
         })
 
         it("returns low when the temperature is below 18", function(){
             subject.down()
             subject.down()
             subject.down()
-            expect(subject.usage()).toEqual('low-usage')
+            expect(subject.energyUsage()).toEqual('low-usage')
         })
 
         it("returns high-usage when above 25", function(){
@@ -121,7 +121,7 @@ describe("Thermostat", function(){
             subject.up()
             subject.up()
             subject.up()
-            expect(subject.usage()).toEqual('high-usage')
+            expect(subject.energyUsage()).toEqual('high-usage')
         })
 
     })

@@ -45,7 +45,7 @@ class Thermostat {
         this.temperature -= 1
     }
 
-    reset(){
+    resetTemperature(){
         this.temperature = 20
     }
 
@@ -61,7 +61,7 @@ class Thermostat {
         }
     }
 
-    usage(){
+    energyUsage(){
         if (this.isLowUsage()){
             return 'low-usage'
         } else if (this.isMediumUsage()){
