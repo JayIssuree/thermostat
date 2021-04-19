@@ -25,10 +25,10 @@ class Thermostat {
     }
 
     turnOnPSM(){
-        if (this.isMaximumTemperature){
+        this.powerSavingMode = true
+        if (this.isMaximumTemperature() == true){
             this.temperature = this.MAXIMUM_TEMPERATURE_PSM_ON
         }
-        this.powerSavingMode = true
     }
 
     up(){
