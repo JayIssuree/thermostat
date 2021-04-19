@@ -87,4 +87,17 @@ describe("Thermostat", function(){
 
     })
 
+    describe("reset", function(){
+
+        it("resets the temperature to 20", function(){
+            subject.turnOffPSM();
+            do {
+                subject.up()
+            } while (subject.getCurrentTemperature() < 32)
+            subject.reset()
+            expect(subject.getCurrentTemperature()).toEqual(20)
+        })
+
+    })
+
 })

@@ -43,6 +43,10 @@ class Thermostat {
         this.temperature -= 1
     }
 
+    reset(){
+        this.temperature = 20
+    }
+
     isMinimumTemperature(){
         return this.temperature <= this.MINIMUM_TEMPERATURE
     }
