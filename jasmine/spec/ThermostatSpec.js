@@ -59,6 +59,32 @@ describe("Thermostat", function(){
             expect(subject.getPSM()).toBe(true)
         })
 
+        it("has a max limit of 25 when PSM is on", function (){
+            do {
+                subject.up()
+            } while (subject.getCurrentTemperature() < 25)
+            subject.up()
+            expect(subject.getCurrentTemperature()).toEqual(25)
+        })
+
+        it("has a max limit of 32 when PSM is off", function(){
+            subject.turnOffPSM();
+            do {
+                subject.up()
+            } while (subject.getCurrentTemperature() < 32)
+            subject.up()
+            expect(subject.getCurrentTemperature()).toEqual(32)
+        })
+
+        it("sets the temperature to 25 when turning PSM mode back on", function(){
+            subject.turnOffPSM();
+            do {
+                subject.up()
+            } while (subject.getCurrentTemperature() < 32)
+            subject.turnOnPSM()
+            expect(subject.getCurrentTemperature()).toEqual(25)
+        })
+
     })
 
 })
